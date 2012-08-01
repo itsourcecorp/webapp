@@ -10,11 +10,15 @@ define('DB_HOST', 'DB_HOST');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
+//** email settings
+define('ADMIN_MAIL', 'ADMIN_MAIL');
+define('CONTACT_MAIL', 'CONTACT_MAIL');
+
+//** if using yii-maill set accounts here
 define('YMAIL_HOST', 'YMAIL_HOST');
 define('YMAIL_USR', 'YMAIL_USR');
 define('YMAIL_PWD', 'YMAIL_PWD');
-define('ADMIN_MAIL', 'ADMIN_MAIL');
-define('CONTACT_MAIL', 'CONTACT_MAIL');
+
 
 
 ?>
