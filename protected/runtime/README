@@ -1,0 +1,2 @@
+this directory is used by yii to store write files during runtime
+yii will need permissions to write to this directory
