@@ -1,0 +1,10 @@
+#ignore the main site configuration file
+site-config.php
+
+#ignore asset files created by yii
+assets/*
+!assets/README
+
+#ignore runtime files created by yii
+protected/runtime/*
+!protected/runtime/README
