@@ -80,6 +80,12 @@ return array(
 			),
 		),
         
+        'session' => array (
+            'class' => 'system.web.CDbHttpSession',
+            'connectionID' => 'db',
+            'sessionTableName' => '_session',
+        ),
+        
         'instagram'=>array(
             'class'=>'InstagramComponent',
             'config'=>array(
