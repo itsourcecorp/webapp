@@ -7,14 +7,15 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'RoboAristocrat',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
+        'application.models.*',
+		'application.models.instagram.*',
 		'application.components.*',
 	),
 
@@ -78,6 +79,17 @@ return array(
 				*/
 			),
 		),
+        
+        'instagram'=>array(
+            'class'=>'InstagramComponent',
+            'config'=>array(
+                'client_id' => '4c16df11bd544975884fa74244d14dd7',
+                'client_secret' => '7772cf2a645349bc935784e8d0db523c',
+                'grant_type' => 'authorization_code',
+                'redirect_uri' => 'http://localhost/roboaristoctat/example/callback.php',
+            ),
+        ),
+        
 	),
 
 	// application-level parameters that can be accessed
