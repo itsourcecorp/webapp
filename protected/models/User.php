@@ -5,12 +5,8 @@
  *
  * The followings are the available columns in table 'user':
  * @property string $id
- * @property string $email
  * @property string $username
- * @property string $password
  * @property string $created
- * @property integer $status
- * @property integer $activation_code
  */
 class User extends CActiveRecord
 {
@@ -40,12 +36,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, username, password', 'required'),
-			array('status, activation_code', 'numerical', 'integerOnly'=>true),
-			array('email, username, password', 'length', 'max'=>45),
+			array('id, username, created', 'required'),
+			array('id', 'length', 'max'=>10),
+			array('username', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, username, password, created, status, activation_code', 'safe', 'on'=>'search'),
+			array('id, username, created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,12 +63,8 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'email' => 'Email',
 			'username' => 'Username',
-			'password' => 'Password',
 			'created' => 'Created',
-			'status' => 'Status',
-			'activation_code' => 'Activation Code',
 		);
 	}
 
@@ -88,11 +80,8 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('email',$this->email,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('created',$this->created,true);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('activation_code',$this->activation_code);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
