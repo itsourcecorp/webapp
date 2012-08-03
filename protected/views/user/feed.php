@@ -5,3 +5,4 @@
     'itemView'=>'_feed',
 )); ?>
 </ul>
+<?php var_dump($model->data) ?>
