@@ -93,6 +93,8 @@ class SiteController extends Controller
             $duration= 3600*24*30; // 30 days
             Yii::app()->user->login($identity,$duration);
             Yii::app()->user->setState('token', $accessToken);
+            Yii::app()->user->setState('IgUser', $user);
+            Yii::app()->user->setState('IgUser', $user);
             $this->redirect($this->createUrl('user/view', array('id'=>Yii::app()->user->id)));             
         }else{
             Yii::app()->instagram->model->openAuthorizationUrl();     
