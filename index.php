@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Los_Angeles');
 require_once('site-config.php');
 
 // change the following paths if necessary
