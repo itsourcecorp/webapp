@@ -77,24 +77,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        /*
-        $model=new LoginForm;
-        if(isset($_POST['LoginForm']))
-        {
-            $model->attributes=$_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
-            if($model->validate() && $model->login()){
-                $this->redirect(Yii::app()->user->returnUrl);
-            }else{
-                print_r($model->errors);
-            }
-        }
-        // display the login form
-        $this->render('login',array('model'=>$model));
-        */ 
-        
-        if( Yii::app()->user->hasState('token') ){
-            echo "YOU HAVE A TOKEN";
+
+        if( !Yii::app()->user->isGuest && Yii::app()->user->hasState('token') ){
+            $this->redirect($this->createUrl('user/view', array('id'=>Yii::app()->user->id)));
         }elseif(isset($_GET['code'])){
             $accessToken = Yii::app()->instagram->model->getAccessToken();
             $user = Yii::app()->instagram->model->getCurrentUser();
@@ -103,15 +88,12 @@ class SiteController extends Controller
                 $U = new User;
                 $U->id = $user->id;
                 $U->username = $user->username;
-                if($U->save()){
-                    echo "ACCOUNT CREATED"; 
-                }
+                $U->save();
             }
             $duration= 3600*24*30; // 30 days
             Yii::app()->user->login($identity,$duration);
-            
-            echo "NAME:" . Yii::app()->user->name;
-            Yii::app()->user->setState('token', $accessToken);             
+            Yii::app()->user->setState('token', $accessToken);
+            $this->redirect($this->createUrl('user/view', array('id'=>Yii::app()->user->id)));             
         }else{
             Yii::app()->instagram->model->openAuthorizationUrl();     
         }
