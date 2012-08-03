@@ -51,9 +51,22 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
+		
+        if( Yii::app()->user->id == $id ){
+            $feed = json_decode(Yii::app()->instagram->model->getUserFeed(), true);
+            $data = $feed['data']; 
+            $dataProvider=new CArrayDataProvider($data, array('id'=>'id'));   
+            $this->render('feed',array(
+                'model'=>$dataProvider,
+            ));            
+        }else{
+            echo "SOMEONE ELSES";
+        }
+        /*
+        $this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+        */
 	}
 
 	/**
