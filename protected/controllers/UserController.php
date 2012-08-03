@@ -55,7 +55,7 @@ class UserController extends Controller
         if( Yii::app()->user->id == $id ){
             $feed = json_decode(Yii::app()->instagram->model->getUserFeed(), true);
             $data = $feed['data']; 
-            $dataProvider=new CArrayDataProvider($data, array('id'=>'id'));   
+            $dataProvider=new CArrayDataProvider($data, array('id'=>'id', 'pagination'=>false));   
             $this->render('feed',array(
                 'model'=>$dataProvider,
             ));            

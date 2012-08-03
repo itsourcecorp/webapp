@@ -1,21 +1,3 @@
-<?php 
 
-    
-    foreach($data as $k => $v){
-        var_dump($k);
-    }
-    
-    
-    ?>
-    <img src="<?php echo $data['images']['thumbnail']['url']; ?>" />
-    <span><?php  var_dump( $data['caption'] ) ?> </span>
-    <?php
-    
-
-    echo "---------------------------------------------------<BR>";
-    echo "---------------------------------------------------<BR>" ;
-    echo "---------------------------------------------------<BR>"  ;
-    echo "---------------------------------------------------<BR>"   ;
-
-
-?>
+<li class="span2"><img src="<?php echo $data['images']['thumbnail']['url']; ?>" /></li>
+<!-- <span><?php  var_dump( $data['caption'] ) ?> </span>   -->
