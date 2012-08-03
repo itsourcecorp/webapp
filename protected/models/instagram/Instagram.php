@@ -98,9 +98,9 @@ class Instagram {
      * Constructor needs to receive the config as an array
      * @param mixed $config
      */
-    public function __construct($config = null, $arrayResponses = false) {
+    public function __construct($config = null, $accesToken=null) {
         $this->_config = $config;
-        $this->_arrayResponses = $arrayResponses;
+        $this->_accessToken = $accesToken;
         if (empty($config)) {
             throw new InstagramException('Configuration params are empty or not an array.');
         }

@@ -7,7 +7,8 @@ class InstagramComponent extends CApplicationComponent
     public function init() {
         // Init this component
         // $this->someconfig is already available
-        $this->_model = new Instagram($this->config);
+        $token = ( !Yii::app()->user->isGuest && Yii::app()->user->hasState('token') ) ? Yii::app()->user->getState('token') : null;
+        $this->_model = new Instagram($this->config, $token);
     }
     
     public function getModel(){
