@@ -7,4 +7,3 @@
         <img src="<?php echo $data['images']['thumbnail']['url']; ?>" />
     </div>
 </li>
-<!-- <span><?php  var_dump( $data['caption'] ) ?> </span>   -->

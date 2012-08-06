@@ -12,8 +12,9 @@ class InstagramComponent extends CApplicationComponent
     public function getModel(){
         return $this->_model;
     }
+    
     public function setModel($model){
         $this->_model =  $model;   
-    }
+    }    
 }
 ?>
