@@ -1,0 +1,1 @@
+<div class="tagname"><a href="#"><?php echo $data['name']?></a> (<?php echo $data['media_count']?>)</div>

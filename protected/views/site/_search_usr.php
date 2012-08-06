@@ -1,0 +1,1 @@
+<div class="username"><a href="#"><?php echo $data['username']?></a></div>

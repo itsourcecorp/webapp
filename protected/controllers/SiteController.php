@@ -110,4 +110,26 @@ class SiteController extends Controller
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+    
+    public function actionSearch($s){
+    
+        if(!$s)
+            die("Please enter search term");
+        
+        //user search    
+        $response = json_decode(Yii::app()->instagram->model->searchUser($s),true);
+        $data = $response['data']; 
+        $userProvider=new CArrayDataProvider($data, array('id'=>'id', 'pagination'=>false));
+        //tag search
+        $response = json_decode(Yii::app()->instagram->model->searchTags($s),true);
+        $data = $response['data']; 
+        $tagProvider=new CArrayDataProvider($data, array('keyField'=>'media_count', 'pagination'=>false));
+                    
+        $this->render('search',array(
+                                'userProvider'=>$userProvider,
+                                'tagProvider'=>$tagProvider,
+        ));
+    }
+    
+    
 }
