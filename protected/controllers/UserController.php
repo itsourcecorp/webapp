@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
 
 	/**
 	 * @return array action filters
@@ -55,7 +55,7 @@ class UserController extends Controller
         if( Yii::app()->user->id == $id ){
             $feed = json_decode(Yii::app()->instagram->model->getUserFeed(), true);
             $data = $feed['data']; 
-            $dataProvider=new CArrayDataProvider($data, array('id'=>'id'));   
+            $dataProvider=new CArrayDataProvider($data, array('id'=>'id', 'pagination'=>false));   
             $this->render('feed',array(
                 'model'=>$dataProvider,
             ));            
